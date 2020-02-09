@@ -1,0 +1,31 @@
+{% set title = 'Home' %}
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Notes</h1>
+<ul>
+{% for note in notes %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <span class="lead">{{ note.title }}</span>
+        <small class="pull-right">{{ note.date | formatDate("dddd, MMMM Do YYYY, h:mm:ss a") }}</small>
+    </div>
+    <div class="panel-body">
+        {{ note.description }}
+    </div>
+    <div class="panel-footer">
+        <a href="/note/{{note._id}}" hre class="btn btn-success">View</a>
+        <a href="/note/{{note._id}}/edit" hre class="btn btn-info">Edit</a>
+        <a href="/note/{{note._id}}/delete" hre class="btn btn-primary">Delete</a>
+    </div>
+</div>
+
+  <!-- <li>{{ note.title }} - {{ note.description }} - {{ note.date }}</li>
+  <a href="/note/{{note._id}}">{{ note.title }}</a>
+  <a href="/note/{{note._id}}/edit">Edittt</a>
+  <a href="/note/{{note._id}}/delete">Delete</a> -->
+{% else %}
+  <li>This would display if the 'notes' collection were empty</li>
+{% endfor %}
+</ul>
+{% endblock %}
