@@ -1,4 +1,5 @@
 var Note = require('./controller/note');
+var User = require('./controller/user');
 
 module.exports = function(app){
 
@@ -17,4 +18,10 @@ module.exports = function(app){
     app.post('/note/:id/edit', Note.update);
 
     app.get('/note/:id/delete', Note.delete);
+
+    app.get('/user/create', User.create);
+    app.post('/user/create', User.save);
+
+    app.get('/user/login', User.login);
+    app.post('/user/login', User.loginPost);
 }
